@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-qa-pvc
+  namespace: grafana-saans
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: grafana-qa-sc
+  resources:
+    requests:
+      storage: 10Gi
