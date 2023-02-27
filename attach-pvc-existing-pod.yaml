@@ -5,12 +5,15 @@ metadata:
   namespace: grafana-saans
 spec:
   containers:
-  - name: my-container
-    image: my-image
+  - name: grafana
+    image: grafana/grafana:9.3.6
     volumeMounts:
-    - name: my-volume
-      mountPath: /path/to/mount
+    - name: storage
+      mountPath:
+        - /etc/grafana/grafana.ini
+        - /var/lib/grafana
+        - /var/run/secrets/kubernetes.io/serviceaccount
   volumes:
-  - name: my-volume
+  - name: storage
     persistentVolumeClaim:
-      claimName: my-pvc
+      claimName: storage
